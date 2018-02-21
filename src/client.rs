@@ -131,6 +131,14 @@ impl Client {
         )
     }
 
+    pub fn move_home(&mut self, view_id: ViewId) -> ClientResult<()> {
+        self.edit(view_id, "move_to_beginning_of_line", None as Option<Value>)
+    }
+
+    pub fn move_end(&mut self, view_id: ViewId) -> ClientResult<()> {
+        self.edit(view_id, "move_to_end_of_line", None as Option<Value>)
+    }
+
     pub fn backspace(&mut self, view_id: ViewId) -> ClientResult<()> {
         self.del(view_id)
     }
