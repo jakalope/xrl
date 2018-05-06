@@ -1,4 +1,5 @@
 use ViewId;
+use std::str::FromStr;
 
 #[derive(Eq, PartialEq, Debug, Clone, Serialize, Deserialize)]
 pub struct ScrollTo {
@@ -17,7 +18,7 @@ fn deserialize_ok() {
     let scroll_to = ScrollTo {
         line: 0,
         column: 18,
-        view_id: "view-id-1".to_string(),
+        view_id: ViewId::from_str("view-id-1").unwrap(),
     };
     assert_eq!(deserialized.unwrap(), scroll_to);
 }

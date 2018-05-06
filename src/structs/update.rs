@@ -2,6 +2,7 @@ use serde::{Deserialize, Deserializer};
 
 use Operation;
 use ViewId;
+use std::str::FromStr;
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct Update {
@@ -77,7 +78,7 @@ fn deserialize_update() {
         ],
         pristine: true,
         rev: None,
-        view_id: "view-id-1".to_string(),
+        view_id: ViewId::from_str("view-id-1").unwrap(),
     };
     let deserialized: Result<Update, _> = serde_json::from_str(s);
     assert_eq!(deserialized.unwrap(), update);
